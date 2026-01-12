@@ -19,12 +19,12 @@ public class Program {
         try {
             conn = DB.getConnection();
             
-            // Correct SQL with proper column names and syntax
+            
             st = conn.prepareStatement(
                 "INSERT INTO seller " +
-                "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +  // Fixed column names
+                "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +  
                 "VALUES " +
-                "(?, ?, ?, ?, ?)"  // Fixed syntax
+                "(?, ?, ?, ?, ?)"  
             );
             
             st.setString(1, "Carl Purple");
@@ -34,7 +34,6 @@ public class Program {
             st.setInt(5, 4);
             
             int rowsAffected = st.executeUpdate();
-            
             System.out.println("Done! Rows affected: " + rowsAffected);
             
         } catch (SQLException e) {
@@ -44,7 +43,6 @@ public class Program {
             System.err.println("Date Parse Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Close resources properly
             DB.closeStatement(st);
             DB.closeConnection();
         }
