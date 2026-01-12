@@ -36,7 +36,7 @@ public class Program {
             st.setInt(5, 4);
             */
             st = conn.prepareStatement(
-            		"insert into department (Name) values ('D1'), ('D2)", Statement.RETURN_GENERATED_KEYS
+            		"insert into department (Name) values ('D1'), ('D2')", Statement.RETURN_GENERATED_KEYS
             		);
             
             
@@ -57,10 +57,8 @@ public class Program {
         } catch (SQLException e) {
             System.err.println("SQL Error: " + e.getMessage());
             e.printStackTrace();
-        } catch (ParseException e) {
-            System.err.println("Date Parse Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
+        } 
+        finally {
             DB.closeStatement(st);
             DB.closeConnection();
         }
